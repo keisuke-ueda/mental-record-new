@@ -76,7 +76,7 @@
                         <div class="panel-title">
                             {{ $selectedRecord ? '選択中カルテ' : '新規カルテ' }}
                         </div>
-                        <textarea name="counseling-data">{{ old('counseling_data', $selectedRecord ? $selectedRecord->counseling_data : '') }}</textarea>
+                        <textarea name="counseling_data">{{ old('counseling_data', $selectedRecord ? $selectedRecord->counseling_data : '') }}</textarea>
                     </div>
                 </div>
             </div>
