@@ -1,0 +1,67 @@
+.site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+    background:#5c84ff;
+    color:white;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.logo img{
+    height:40px;
+}
+
+.header-nav a{
+    margin-right:20px;
+    color:white;
+    text-decoration:none;
+}
+
+.header-nav{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    padding:8px 18px;
+    background:#5178ee;
+    border-radius:6px;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+/* ホバー */
+.nav-btn:hover{
+    background:#2450d3;
+    color:white;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logout-btn{
+    background:#ff5c5c;
+    border:none;
+    color:white;
+    padding:6px 12px;
+    cursor:pointer;
+}
+
