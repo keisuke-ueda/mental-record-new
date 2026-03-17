@@ -133,4 +133,15 @@ class RecordController extends Controller
             ])
             ->with('success', '画像を削除しました。');
     }
+    public function showImage(Client $client, Record $record, RecordImage $image)
+    {
+        abort_unless($record->client_id === $client->id, 404);
+        abort_unless($image->record_id === $record->id, 404);
+
+        $path = storage_path('app/public/' . $image->image_path);
+
+        abort_unless(file_exists($path), 404);
+
+        return response()->file($path);
+    }
 }

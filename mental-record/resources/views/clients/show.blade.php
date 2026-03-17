@@ -236,15 +236,18 @@
                                     <div class="image-list">
                                         @foreach($selectedRecord->images as $image)
                                             <div class="image-item">
-                                                <a href="{{ asset('storage/' . $image->image_path) }}" target="_blank">
-                                                <!-- <a href="{{ route('records.images.download', [
+                                                <a href="{{ route('records.images.show',
+                                                    ['client' => $client->id,
+                                                    'record' => $selectedRecord->id,
+                                                    'image' => $image->id
+                                                    ]) }}" target="_blank">
+
+                                                    <img src="{{ route('records.images.show', [
                                                         'client' => $client->id,
                                                         'record' => $selectedRecord->id,
                                                         'image' => $image->id
-                                                    ]) }}"> -->
-                                                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="record image">
+                                                    ]) }}" alt="record image">
                                                 </a>
-
                                                 <button
                                                     type="button"
                                                     class="image-delete-btn"

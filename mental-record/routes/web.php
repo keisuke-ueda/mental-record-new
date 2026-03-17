@@ -48,8 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/clients/{client}/records', [RecordController::class, 'store'])->name('records.store');
     Route::post('/clients/{client}/records/{record}/delete', [RecordController::class, 'destroy'])->name('records.destroy');
     Route::post('/clients/{client}/records/{record}/images/{image}/delete', [RecordController::class, 'destroyImage'])->name('records.images.destroy');
-    Route::get('/clients/{client}/records/{record}/images/{image}/download', [RecordController::class, 'downloadImage'])->name('records.images.download');
-
+    Route::get('/clients/{client}/records/{record}/images/{image}',[RecordController::class, 'showImage'])->name('records.images.show');
+   
     // カルテ簡易パスワード
     Route::post('/clients/{client}/chart-auth', [ClientChartPasswordController::class, 'store'])
         ->name('clients.chart.auth');

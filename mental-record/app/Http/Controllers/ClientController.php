@@ -72,9 +72,6 @@ class ClientController extends Controller
                 ->with('chart_error', 'カルテを見るにはパスワード入力が必要です。');
         }
 
-        // 毎回入力にしたいので、表示後すぐ破棄
-        session()->forget('allowed_chart_client_id');
-
         // 表示処理
         $records = Record::with(['diseases', 'symptoms', 'medicines', 'images'])
             ->where('client_id', $client->id)

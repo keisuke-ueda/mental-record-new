@@ -89,6 +89,7 @@ button {
 .menu-card {
     display: block;
     background: #fff;
+    color: #4e4e4e;
     border: 2px solid #5c84ff;
     padding: 30px;
     text-decoration: none;
