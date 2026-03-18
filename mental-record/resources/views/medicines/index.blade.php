@@ -46,8 +46,11 @@
     @endforeach
 </table>
 
-<br>
+@if($medicines->hasPages())
+    <div class="pagination-wrap">
+        {{ $medicines->links() }}
+    </div>
+@endif
 
-{{ $medicines->links() }}
 
 @endsection

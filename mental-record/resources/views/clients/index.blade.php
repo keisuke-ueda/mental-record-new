@@ -67,6 +67,11 @@
     @endforeach
 
 </table>
+@if($clients->hasPages())
+    <div class="pagination-wrap">
+        {{ $clients->links() }}
+    </div>
+@endif
 
 {{-- モーダル --}}
 <div id="chartPasswordModal" class="modal-overlay">

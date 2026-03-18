@@ -12,7 +12,7 @@ class SymptomController extends Controller
      */
     public function index()
     {
-        $symptoms = Symptom::latest()->paginate(10);
+        $symptoms = Symptom::latest()->paginate(5);
 
         return view('symptoms.index', compact('symptoms'));
     }

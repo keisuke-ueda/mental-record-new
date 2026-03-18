@@ -132,6 +132,28 @@ button {
     border-radius: 5px;
     width: 20%;
 }
+.pagination-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: #4c6fff;;
+}
+.pagination-wrap nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.pagination-wrap svg {
+    width: 20px;
+    height: 20px;
+}
+.pagination-wrap .hidden {
+    display: none;
+}
+.pagination-wrap a,
+.pagination-wrap span {
+    font-size: 14px;
+}
 
 
 /* テーブルデザイン */

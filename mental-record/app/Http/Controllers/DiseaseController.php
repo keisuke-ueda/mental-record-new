@@ -12,7 +12,7 @@ class DiseaseController extends Controller
      */
     public function index()
     {
-        $diseases = Disease::latest()->paginate(10);
+        $diseases = Disease::latest()->paginate(5);
 
         return view('diseases.index', compact('diseases'));
     }
