@@ -53,6 +53,26 @@
         $nextRecord = ($currentIndex !== null && $currentIndex > 0) ? $records[$currentIndex - 1] : null;
     @endphp
 
+
+    @php
+        $checkedDiseaseIds = old(
+            'disease_ids',
+            $selectedRecord ? $selectedRecord->diseases->pluck('id')->map(fn($id) => (string)$id)->toArray() : []
+        );
+
+        $checkedSymptomIds = old(
+            'symptom_ids',
+            $selectedRecord ? $selectedRecord->symptoms->pluck('id')->map(fn($id) => (string)$id)->toArray() : []
+        );
+
+        $checkedMedicineIds = old(
+            'medicine_ids',
+            $selectedRecord ? $selectedRecord->medicines->pluck('id')->map(fn($id) => (string)$id)->toArray() : []
+        );
+    @endphp
+
+
+
     <!-- 入力フォーム -->
     <form id="record-form" method="POST" action="{{ route('records.store', $client->id) }}" enctype="multipart/form-data">
         @csrf
@@ -132,13 +152,8 @@
 
                 <div class="panel record-view-box">
                     <div class="panel-inner">
-                        <div class="panel-title">過去カルテ</div>
-
-                        @if($selectedRecord)
-                            <textarea readonly class="readonly">{{ $selectedRecord->counseling_data }}</textarea>
-                        @else
-                            <textarea readonly>まだカルテがありません。</textarea>
-                        @endif
+                        <div class="panel-title">メモ</div>
+                        <textarea class="memo" id="temporary-memo" placeholder="ここは保存されないメモ欄です。自由に記入できます。"></textarea>
                     </div>
                 </div>
             </div>
@@ -159,7 +174,7 @@
                                                 type="checkbox"
                                                 name="disease_ids[]"
                                                 value="{{ $disease->id }}"
-                                                {{ $selectedRecord->diseases->contains('id', $disease->id) ? 'checked' : '' }}
+                                                {{ in_array((string)$disease->id, $checkedDiseaseIds, true) ? 'checked' : '' }}
                                             >
                                             {{ $disease->disease }}
                                         </label>
@@ -178,7 +193,7 @@
                                                 type="checkbox"
                                                 name="symptom_ids[]"
                                                 value="{{ $symptom->id }}"
-                                                {{ $selectedRecord->symptoms->contains('id', $symptom->id) ? 'checked' : '' }}
+                                                {{ in_array((string)$symptom->id, $checkedSymptomIds, true) ? 'checked' : '' }}
                                             >
                                             {{ $symptom->symptom }}
                                         </label>
@@ -201,7 +216,7 @@
                                                 name="medicine_ids[]"
                                                 value="{{ $medicine->id }}"
                                                 id="medicine_{{ $medicine->id }}"
-                                                {{ $selectedRecord->medicines->contains('id', $medicine->id) ? 'checked' : '' }}
+                                                {{ in_array((string)$medicine->id, $checkedMedicineIds, true) ? 'checked' : '' }}
                                             >
 
                                             <span
@@ -337,6 +352,7 @@
 
 
 <script src="{{ asset('js/app.js') }}" defer></script>
+
 
 @endsection
 

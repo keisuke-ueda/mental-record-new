@@ -84,3 +84,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// メモ機能
+document.addEventListener('DOMContentLoaded', function () {
+    const memo = document.getElementById('temporary-memo');
+    if (!memo) return;
+
+    const storageKey = 'temporary_memo_shared';
+
+    const savedMemo = localStorage.getItem(storageKey);
+    if (savedMemo !== null) {
+        memo.value = savedMemo;
+    }
+
+    memo.addEventListener('input', function () {
+        localStorage.setItem(storageKey, memo.value);
+    });
+});

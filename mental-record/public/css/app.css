@@ -244,7 +244,7 @@ table thead tr{
 .efficacy,
 .symptom-summary,
 .counseling-data,
-.readonly {
+.memo {
     white-space: pre-wrap;
 }
 
@@ -358,7 +358,7 @@ table thead tr{
     height:600px;
 }
 .panel.record-view-box {
-    height:405px;
+    height:415px;
 }
 .panel-inner {
     padding: 14px;
